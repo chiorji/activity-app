@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <title>Activity application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="appliation" content="activity app">
+    <meta name="author" content="Bright">
+    <link rel="stylesheet" href="./public/css/main.css">
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Activity app</h1>
+      </header>
+      <nav>
+        <form name="todo" id="todo" action="">
+          <fieldset>
+            <legend>
+              <h2>Add an item to the list</h2>
+            </legend>
+
+            <div class="form-fields">
+              <label for="name">Item name :</label>
+              <input type="text" id="name" placeholder="E.g (Push your codes to github)" required class="input">
+
+              <label for="date">Due date :</label>
+              <input type="date" id="date" required class="input">
+
+              <span>
+                <button type="submit">Add &check;</button>
+              </span>
+            </div>
+            <div class="progress-wrap">
+              <progress max="100" value="0" class="progress">You are almost there!</progress>
+              <p class="progress-msg">Start filling the form!</p>
+            </div>
+          </fieldset>
+        </form>
+      </nav>
+      <main>
+        <section id="view-box">
+          <ul class="itemList"></ul>
+        </section>
+      </main>
+
+      <footer role="contentinfo" class="footer">
+        <strong>Developed by Chigbogu Orji</strong>
+      </footer>
+    </div>
+    <script>
+      var numValid = 0,
+        form = document.forms.todo,
+        progress = document.querySelector('.progress'),
+        progressMsg = document.querySelector('.progress-msg'),
+        inputs = document.querySelectorAll('.input');
+
+      // reset the values of form submit
+      form.addEventListener('submit', () => {
+        numValid = 0;
+        progress.setAttribute('value', '0');
+        progressMsg.textContent = 'Start filling the form!'
+      }, false);
+
+      // track changes on the input
+      [].forEach.call(inputs, (input) => {
+        input.addEventListener('change', TrackProgress, false);
+      });
+
+
+      function TrackProgress() {
+        if (this.validity.valid) {
+          numValid++;
+        }
+
+        if (numValid === 0) {
+          progress.setAttribute('value', '0');
+          progressMsg.textContent = 'Start filling the form!';
+        }
+
+        if (numValid == 1) {
+          progress.setAttribute('value', '50');
+          progressMsg.textContent = 'Almost there';
+        }
+
+        if (numValid == 2) {
+          progress.setAttribute('value', '100');
+          progressMsg.textContent = 'All done! Press Add to finish';
+        }
+      }
+    </script>
+    <script src="./public/js/main.js"></script>
+  </body>
+
+</html>
