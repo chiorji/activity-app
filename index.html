@@ -9,22 +9,23 @@
     <meta name="appliation" content="activity app">
     <meta name="author" content="Bright">
     <link rel="stylesheet" href="./public/css/main.css">
+    <script src="./public/js/moment.min.js"></script>
+    <script>
+      window.m = moment();
+    </script>
   </head>
 
   <body>
     <div class="wrapper">
       <header>
-        <h1>Activity app</h1>
+        <h1>MY ACTIVITY</h1>
+        <p>To add an activity to the list, start by filling in the activity form.</p>
       </header>
       <nav>
         <form name="todo" id="todo" action="">
           <fieldset>
-            <legend>
-              <h2>Add an item to the list</h2>
-            </legend>
-
             <div class="form-fields">
-              <label for="name">Item name :</label>
+              <label for="name">Activity :</label>
               <input type="text" id="name" placeholder="E.g (Push your codes to github)" required class="input">
 
               <label for="date">Due date :</label>
@@ -46,10 +47,6 @@
           <ul class="itemList"></ul>
         </section>
       </main>
-
-      <footer role="contentinfo" class="footer">
-        <strong>Developed by Chigbogu Orji</strong>
-      </footer>
     </div>
     <script>
       var numValid = 0,
