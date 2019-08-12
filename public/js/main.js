@@ -1,9 +1,11 @@
 console.log('My activity app');
+
 var listBox = document.querySelector('.itemList');
 moment();
 
 if ('localStorage' in window) {
   updateDom();
+
   var
     form = document.forms.todo;
   form.addEventListener('submit', saveTodo, false);
@@ -36,10 +38,6 @@ if ('localStorage' in window) {
       done: false
     }
 
-    if (todos == null) {
-      todos = [];
-    }
-
     var filtered = todos.filter((item) => item.name == todo.name);
     if (filtered.length == 0) {
       todos.push(todo);
@@ -52,7 +50,7 @@ if ('localStorage' in window) {
 
   function getTodo() {
     var todoItem = localStorage.getItem('todo');
-    return JSON.parse(todoItem) || '';
+    return JSON.parse(todoItem) || [];
   }
 
   function saveToStore(todos) {
@@ -68,10 +66,10 @@ if ('localStorage' in window) {
 
     listBox.innerHTML = todoItems.map(list => {
       return `<li class="listElem">
-  <input type="checkbox" data-id="${list.id}" class="status" ${list.done ? 'checked' : ''}>
-  <span>${list.name}</span>
-  <span class="date">( ${moment.utc(list.date, 'YYYY-MM-DD').fromNow()} )</span>
-  <span title="delete" class="action-btn" data-action="delete" data-id="${list.id}">&times;</span></li>`
+        <input type="checkbox" data-id="${list.id}" ${list.done ? 'checked' : ''}>
+        <span>${list.name}</span>
+        <span class="date">( ${moment.utc(list.date, 'YYYY-MM-DD').fromNow()} )</span>
+        <span title="delete" class="action-btn" data-action="delete" data-id="${list.id}">&times;</span></li>`
     }).join('');
   }
 
