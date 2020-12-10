@@ -9,10 +9,6 @@
     <meta name="appliation" content="activity app">
     <meta name="author" content="Bright">
     <link rel="stylesheet" href="./public/css/main.css">
-    <script src="./public/js/moment.min.js"></script>
-    <script>
-      window.m = moment();
-    </script>
   </head>
 
   <body>
@@ -21,45 +17,47 @@
         <h1>MY ACTIVITY</h1>
         <p>To add an activity to the list, start by filling in the activity form.</p>
       </header>
-      <nav>
+       <main class="wrapper --inner">
+      <aside>
         <form name="todo" id="todo" action="">
-          <fieldset>
             <div class="form-fields">
-              <label for="name">Activity :</label>
+              <label for="name" class="input-label">Description:</label>
               <input type="text" id="name" placeholder="E.g (Push your codes to github)" required class="input">
 
-              <label for="date">Due date :</label>
+              <label for="date" class="input-label">Due date:</label>
               <input type="date" id="date" required class="input">
 
+              <div class="progress-wrap">
+                <progress max="100" value="0" class="progress">You are almost there!</progress>
+                <p class="progress-msg">Start entry!</p>
+              </div>
+
               <span>
-                <button type="submit">Add &check;</button>
+                <button type="submit" class="input">Add &check;</button>
               </span>
             </div>
-            <div class="progress-wrap">
-              <progress max="100" value="0" class="progress">You are almost there!</progress>
-              <p class="progress-msg">Start filling the form!</p>
-            </div>
-          </fieldset>
         </form>
-      </nav>
-      <main>
+      </aside>
         <section id="view-box">
           <ul class="itemList"></ul>
         </section>
       </main>
     </div>
+    <script src="./public/js/main.js"></script>
     <script>
+      // const allActivities = Activity.getAllActivities()
       var numValid = 0,
         form = document.forms.todo,
         progress = document.querySelector('.progress'),
         progressMsg = document.querySelector('.progress-msg'),
         inputs = document.querySelectorAll('.input');
 
-      // reset the values of form submit
-      form.addEventListener('submit', () => {
+        console.log(form)
+      form.addEventListener('submit', (e) => {
+        e.preventDefault()
         numValid = 0;
         progress.setAttribute('value', '0');
-        progressMsg.textContent = 'Start filling the form!'
+        progressMsg.textContent = 'Start entry!'
       }, false);
 
       // track changes on the input
@@ -75,7 +73,7 @@
 
         if (numValid === 0) {
           progress.setAttribute('value', '0');
-          progressMsg.textContent = 'Start filling the form!';
+          progressMsg.textContent = 'Start entry!';
         }
 
         if (numValid == 1) {
@@ -89,7 +87,6 @@
         }
       }
     </script>
-    <script src="./public/js/main.js"></script>
   </body>
 
 </html>

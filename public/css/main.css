@@ -5,6 +5,7 @@
     --secondary-blue: rgb(13, 65, 163);
     --primary-purple: rgb(121, 55, 110);
     --secondary-purple: rgb(136, 5, 108);
+    box-sizing: border-box;
 }
 
 body {
@@ -15,20 +16,23 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: rgb(121, 55, 110);
+    background-color: thistle;
 }
 
-.wrapper {
+header {
+    padding: 10px 0;
+    text-align: center;
+    background-color: teal;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.wrapper.--inner {
     width: 80%;
-    margin: 10px auto 50px;
-    background: rgb(136, 5, 108);
-    border-style: solid;
-    border-width: 2px 2px 5px 2px;
-    border-color: rgb(200, 200, 200);
-    border-bottom-color: var(--primary-blue);
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
+    margin: 0px auto;
+    min-height: calc(100vh - 60px);
+    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
 }
 
 h1,
@@ -38,40 +42,32 @@ h2 {
     font-weight: 900;
 }
 
-header {
-    padding: 20px 0;
-    text-align: center;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+aside {
+    /* padding: 0px 10px; */
+    width: 30%;
+    border: 1px solid rgb(208, 233, 16);
 }
 
-nav {
-    padding: 10px;
-}
 
-header,
-nav,
-main {
-    box-sizing: border-box;
+#view-box{
+    border: 1px solid green;
+    min-height: 80vh;
+    flex-grow: 1;
 }
 
 /*BUTTON AND INPUT [FORM]
 ---------------------------------------*/
-button,
-input[type="text"],
-input[type="date"] {
+.input {
     border: 1px solid rgb(230, 230, 230);
     border-radius: 2px;
     transform: none;
     font-family: inherit;
     font-size: inherit;
-    min-height: 30px;
-    outline: 0;
-}
-
-input[type="text"],
-input[type="date"] {
-    min-width: 250px;
-    padding: 0 10px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1rem;
 }
 
 input:focus {
@@ -79,36 +75,16 @@ input:focus {
     outline-width: 2px;
     outline-color: cornflowerblue;
 }
+.input-label{
+    font-weight: bold;
+}
 
 button[type="submit"] {
-    min-width: 90px;
     cursor: pointer;
     font-weight: 900;
-    background: rgb(121, 55, 110);
+    background:teal;
     color: rgb(245, 245, 245);
-}
-
-button[type="submit"]:hover {
-    background: cornflowerblue;
-}
-
-form#todo label {
-    display: inline-block;
-    font-weight: 800;
-}
-
-form#todo fieldset input+label {
-    margin-left: 30px;
-}
-
-fieldset {
-    border: 1px solid rgb(245, 245, 245);
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    padding: 20px 0 0;
-    text-align: center;
-    background: var(--primary-blue);
+    margin-top: 1rem;
 }
 
 /*TRACK FORM PROGRESS
