@@ -10,12 +10,11 @@
     --primary-white: #fff;
     --darken-white: #eee;
     --secondary-color: rgb(32, 116, 165);
-    --primary-delete: rgb(192, 17, 17);
+    --primary-delete: rgb(240, 234, 157);
     --darken-whitex2: #ddd;
     --basic-green:rgb(124, 189, 124);
     --default-font-size: 14px;
     --text-font-size: 1.5rem;
-    box-sizing: border-box;
 }
 
 body {
@@ -129,7 +128,8 @@ button.input:hover{
 
 .completed {
     text-decoration: line-through;
-    text-decoration-color: var(--basic-green);
+    text-decoration-color: var(--primary-color);
+    opacity: .8;
 }
 
 .listElem td {
@@ -160,6 +160,7 @@ button.input:hover{
     -moz-appearance: none;
     appearance: none;
     border: 1px solid var(--secondary-color);
+    background-color: var(--primary-delete);
 }
 
 .check-input:checked {
