@@ -24,6 +24,7 @@
       newBody.innerHTML = str
       frag.appendChild(newBody)
       document.querySelector('.table-view').appendChild(frag)
+      this.toggleCompleted()
     }
 
     addToDom(item) {
