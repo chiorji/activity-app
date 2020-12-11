@@ -13,80 +13,48 @@
 
   <body>
     <div class="wrapper">
-      <header>
-        <h1>MY ACTIVITY</h1>
-        <p>To add an activity to the list, start by filling in the activity form.</p>
+      <header class="top-header">
+        <h1>My Activity List</h1>
       </header>
        <main class="wrapper --inner">
-      <aside>
+      <aside class="aside">
+        <h4 class="heading">To add an activity to the list, start by filling in the form below</h4>
         <form name="todo" id="todo" action="">
             <div class="form-fields">
-              <label for="name" class="input-label">Description:</label>
-              <input type="text" id="name" placeholder="E.g (Push your codes to github)" required class="input">
+              <label for="description" class="input-label">Description:</label>
+              <input type="text" id="description" placeholder="E.g (Push your codes to github)" required class="input" value="Activity description">
 
               <label for="date" class="input-label">Due date:</label>
-              <input type="date" id="date" required class="input">
-
-              <div class="progress-wrap">
-                <progress max="100" value="0" class="progress">You are almost there!</progress>
-                <p class="progress-msg">Start entry!</p>
-              </div>
+              <input type="date" id="date" required class="input" value="2020-11-11">
 
               <span>
-                <button type="submit" class="input">Add &check;</button>
+                <button type="submit" class="input">Add to activity list</button>
               </span>
             </div>
         </form>
       </aside>
         <section id="view-box">
-          <ul class="itemList"></ul>
+          <header>
+            <h2 class="list-heading">List</h2>
+          </header>
+          <table class="table-view">
+            <thead class="table--head">
+              <tr>
+                <th>&checkmark;</th>
+                <th>Description</th>
+                <th>Due Date</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
         </section>
       </main>
     </div>
     <script src="./public/js/main.js"></script>
-    <script>
-      // const allActivities = Activity.getAllActivities()
-      var numValid = 0,
-        form = document.forms.todo,
-        progress = document.querySelector('.progress'),
-        progressMsg = document.querySelector('.progress-msg'),
-        inputs = document.querySelectorAll('.input');
-
-        console.log(form)
-      form.addEventListener('submit', (e) => {
-        e.preventDefault()
-        numValid = 0;
-        progress.setAttribute('value', '0');
-        progressMsg.textContent = 'Start entry!'
-      }, false);
-
-      // track changes on the input
-      [].forEach.call(inputs, (input) => {
-        input.addEventListener('change', TrackProgress, false);
-      });
-
-
-      function TrackProgress() {
-        if (this.validity.valid) {
-          numValid++;
-        }
-
-        if (numValid === 0) {
-          progress.setAttribute('value', '0');
-          progressMsg.textContent = 'Start entry!';
-        }
-
-        if (numValid == 1) {
-          progress.setAttribute('value', '50');
-          progressMsg.textContent = 'Almost there';
-        }
-
-        if (numValid == 2) {
-          progress.setAttribute('value', '100');
-          progressMsg.textContent = 'All done! Press Add to finish';
-        }
-      }
-    </script>
+    <script src="./public/js/ui.js"></script>
   </body>
 
 </html>
