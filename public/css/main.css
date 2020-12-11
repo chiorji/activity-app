@@ -9,8 +9,7 @@
     --primary-color: #333;
     --primary-white: #fff;
     --darken-white: #eee;
-    --secondary-color: rgb(11, 57, 145);
-    --secondary-color-light: rgb(32, 116, 165);
+    --secondary-color: rgb(32, 116, 165);
     --primary-delete: rgb(192, 17, 17);
     --darken-whitex2: #ddd;
     --basic-green:rgb(124, 189, 124);
@@ -117,16 +116,15 @@ button.input:hover{
 
 .table--head {
     background-color: var(--basic-green);
-    color: var(--secondary-color);
+    color: var(--primary-white);
 }
 
 .table--head th{
     padding: 1rem;
 }
 
-
 .listElem {
-    border-left: 10px solid transparent;
+    border-left: 2px solid transparent;
 }
 
 .listElem td {
@@ -142,7 +140,7 @@ button.input:hover{
 
 .listElem:hover {
     background: var(--darken-white);
-    border-left-color: var(--darken-whitex2);
+    border-left-color: var(--basic-green);
 }
 
 .listElem:hover .action-btn {
