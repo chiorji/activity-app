@@ -1,9 +1,10 @@
-(function () {
-  // START CLASS
+(function(){
+ 'use strict';
   class Ui {
     constructor () {
       this.form = document.forms.todo
       this.inputs = document.querySelectorAll('.input')
+      this.deleteButton = document.querySelectorAll('.action-btn')
     }
 
     static updateDOMList() {
@@ -12,11 +13,9 @@
         console.log('No list to display')
         return
       }
-      const compare = ((a,b) => b.id - a.id)
-      const listSorted = list.sort(compare)
       const frag = new DocumentFragment()
       const newBody = document.createElement('tbody')
-     const str = listSorted.map(item => `<tr class="listElem"><td>
+     const str = list.map(item => `<tr class="listElem"><td>
      <input type="checkbox" data-id="${item.id}" ${item.completed ? 'checked' : ''} class="check-input"></td>
        <td class="description">${item.name}</td>
      <td class="date">${item.dueTime}</td>
@@ -35,11 +34,10 @@
       <td class="date">${item.dueTime}</td>
       <td title="delete" class="action-btn" data-action="delete" data-id="${item.id}">&times;</td>`
       tr.innerHTML = str
-      document.querySelector('.table-view tbody').appendChild(tr)
+      document.querySelector('.table-view tbody').insertAdjacentElement('afterbegin',tr)
     }
-  }
-  // END CLASS
-
+}
+  Ui.updateDOMList()
   const ui = new Ui()
   ui.form.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -59,7 +57,22 @@
     alert(err.message)
   }
 
-  }, false);
+}, false);
 
-  Ui.updateDOMList()
+// Deletign an activity
+Array.from(ui.deleteButton).forEach(btn => {
+  btn.addEventListener('click', async (e) => {
+    try {
+      const id = parseInt(e.target.dataset.id)
+      console.log('Clicked id: ', id)
+      const del = await Activity.removeActivityById(id)
+      Activity.saveAllActivities(del)
+      console.log(e.target.closest('tr'))
+      e.target.closest('tr').remove()
+    } catch (err) {
+      console.log(err.name, err.message)
+      alert(err.message)
+    }
+  })
+})
 })()
