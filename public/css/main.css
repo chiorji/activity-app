@@ -9,8 +9,11 @@
     --primary-color: #333;
     --primary-white: #fff;
     --darken-white: #eee;
-    --secondary-color: rgb(6, 97, 150);
+    --secondary-color: rgb(11, 57, 145);
+    --secondary-color-light: rgb(32, 116, 165);
     --primary-delete: rgb(192, 17, 17);
+    --darken-whitex2: #ddd;
+    --basic-green:rgb(124, 189, 124);
     --default-font-size: 14px;
     --text-font-size: 1.5rem;
     box-sizing: border-box;
@@ -33,15 +36,16 @@ body {
 
 .wrapper.--inner {
     width: 80%;
-    margin: 30px auto;
-    min-height: calc(100vh - 60px);
+    margin: 10px auto;
+    min-height: 85vh;
     display: flex;
     flex-direction: row;
+    background-color: var(--darken-white);
 }
 
 .aside {
     width: 30%;
-    background-color: var(--darken-white);
+    background-color: var(--basic-green);
     padding: 1rem;
 }
 
@@ -78,7 +82,7 @@ body {
 input:focus {
     outline-style: solid;
     outline-width: 2px;
-    outline-color: cornflowerblue;
+    outline-color: var(--secondary-color);
 }
 
 .input-label{
@@ -90,11 +94,16 @@ input:focus {
 
 button.input {
     cursor: pointer;
-    background:var(--secondary-color);
+    background:var(--basic-green);
     color: rgb(245, 245, 245);
     margin-top: 1rem;
+    font-size: 1.3rem;
 }
 
+button.input:hover{
+    background-color: var(--darken-white);
+    color: var(--basic-green);
+}
 /*MAIN APP CONTAINER
 ------------------------------------------*/
 .table-view {
@@ -103,11 +112,12 @@ button.input {
     font-size: 1.1rem;
     width: 100%;
     border-collapse: collapse;
+    background-color: var(--primary-white);
 }
 
 .table--head {
-    background-color: var(--primary-color);
-    color: var(--primary-white);
+    background-color: var(--basic-green);
+    color: var(--secondary-color);
 }
 
 .table--head th{
@@ -116,14 +126,14 @@ button.input {
 
 
 .listElem {
-    border-left: 5px solid transparent;
+    border-left: 10px solid transparent;
 }
 
 .listElem td {
     padding: .4rem;
     position: relative;
     cursor: pointer;
-    border-bottom: 1px solid wheat;
+    border-bottom: 1px solid var(--darken-white);
 }
 
 .listElem td:first-of-type {
@@ -131,8 +141,8 @@ button.input {
 }
 
 .listElem:hover {
-    background: whitesmoke;
-    border-left-color: var(--secondary-color);
+    background: var(--darken-white);
+    border-left-color: var(--darken-whitex2);
 }
 
 .listElem:hover .action-btn {
@@ -150,7 +160,7 @@ button.input {
 }
 
 .check-input:checked {
-    background-color: var(--secondary-color);
+    background-color: var(--basic-green);
 }
 
 .check-input:focus{

@@ -59,6 +59,7 @@
       }
     }
 
+  //  Mark an item as completed
     static markAsCompleted(id) {
       if (typeof (id) !== "number") {
         throw new Error({ msg: 'Id must be a number' })
