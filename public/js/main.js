@@ -1,3 +1,4 @@
+'use strict';
  class Activity {
     constructor (name, dueTime) {
       this.name = name
@@ -8,7 +9,9 @@
 
     // Return all activities saved or an empty array of no activity
    static getAllActivities() {
+    const compare = ((a,b) => b.id - a.id)
      let act = localStorage['act'] ? JSON.parse(localStorage['act']) : [];
+     act.length > 0 ? act.sort(compare) : act
     return act
     }
 
@@ -29,17 +32,20 @@
     }
 
     // Removing an activity by id
-    static removeActivityById(id) {
+    static async removeActivityById(id) {
       if (typeof (id) !== "number") {
         throw new Error('Id must be a number')
       }
-
-      const activities = this.getAllActivities()
+      const activities = await this.getAllActivities()
       if (!activities.length) {
         throw new Error('No activity to remove')
       }
-      const act = activities.filter(item => item.id !== id)
-      this.saveActivities(act)
+      try {
+        const act = activities.filter(item => parseInt(item.id) !== id)
+        return act
+      } catch (err) {
+        throw new Error('Failed to delete activity with id: ' + id)
+     }
     }
 
    static validateItem(item) {
