@@ -127,6 +127,11 @@ button.input:hover{
     border-left: 2px solid transparent;
 }
 
+.completed {
+    text-decoration: line-through;
+    text-decoration-color: var(--basic-green);
+}
+
 .listElem td {
     padding: .4rem;
     position: relative;

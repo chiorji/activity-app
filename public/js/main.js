@@ -60,18 +60,21 @@
     }
 
   //  Mark an item as completed
-    static markAsCompleted(id) {
+    static toggleCompleted(id) {
       if (typeof (id) !== "number") {
-        throw new Error({ msg: 'Id must be a number' })
+        throw new Error('Item Id must be a number')
       }
-
-      const acts = this.getAllActivities()
-      for (var x = 0, max = acts.length; x < max; x++) {
-        if (acts[x].id === id) {
-          acts[x].completed = !acts[x].completed;
-          console.log(acts[x]);
-          saveActivities(acts);
+      try {
+        const items = this.getAllActivities()
+        for (let x = 0, max = items.length; x < max; x++) {
+          if (items[x].id === id) {
+            items[x].completed = !items[x].completed;
+            break;
+          }
         }
+        return items
+        } catch (err) {
+          throw new Error('Failed to toggle item state')
       }
     }
   }
