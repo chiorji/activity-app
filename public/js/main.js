@@ -52,6 +52,7 @@ const Activity = (function () {
 
   // Changing completed status
   const toggleCompleted = (id) => {
+    console.log(id)
     if (!id || typeof(id) !== "number") {
       throw new Error('Id must be a number')
     }
@@ -73,5 +74,3 @@ const Activity = (function () {
     toggle: toggleCompleted
   }
 })()
-
-console.log(Activity)
